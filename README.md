@@ -1,7 +1,7 @@
-# Deep Focus TODO app
+# Deep Focus app
 ![](/assets/images/work_like_monk.jpg)
 ## Overview
-Depp Focus TODO app to aplikacja do planowania zadań zgodnie z najnowszymi badaniami i trendami. W funkcjonalnościach zamierzam zawrzeć planowanie tygodnia, planowanie zadań w blokach czasowych, oraz pracę w pełnym skupieniu nad konkretnym zadaniem (monk mode). W dobie wiecznych rozpraszaczy dobrze jest mieć jedno miejsce gdzie będzie można szybko sprawdzić na czym trzeba się skupić w danym momencie według swojego planu. 
+Depp Focus app to aplikacja do planowania zadań zgodnie z najnowszymi badaniami i trendami. W funkcjonalnościach zamierzam zawrzeć planowanie tygodnia, planowanie zadań w blokach czasowych, oraz pracę w pełnym skupieniu nad konkretnym zadaniem (monk mode). W dobie wiecznych rozpraszaczy dobrze jest mieć jedno miejsce gdzie będzie można szybko sprawdzić na czym trzeba się skupić w danym momencie według swojego planu. 
 
 ## Features
 - tryb planowania zadań
