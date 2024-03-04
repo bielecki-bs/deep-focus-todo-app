@@ -3,6 +3,12 @@
 ## Overview
 Depp Focus app to aplikacja do planowania zadań zgodnie z najnowszymi badaniami i trendami. W funkcjonalnościach zamierzam zawrzeć planowanie tygodnia, planowanie zadań w blokach czasowych, oraz pracę w pełnym skupieniu nad konkretnym zadaniem (monk mode). W dobie wiecznych rozpraszaczy dobrze jest mieć jedno miejsce gdzie będzie można szybko sprawdzić na czym trzeba się skupić w danym momencie według swojego planu. 
 
+## Resources
+- https://github.com/devmentors/Confab
+- https://todoist.com/productivity-methods/time-blocking
+- https://todoist.com/productivity-methods/systemist
+- https://todoist.com/productivity-methods/pomodoro-technique
+
 ## Features
 - tryb planowania zadań
     - dodawanie zadań
@@ -37,5 +43,8 @@ Depp Focus app to aplikacja do planowania zadań zgodnie z najnowszymi badaniami
 - wyświetlanie wykonanych zadań do 21/04
 - odłożenie zadania, dodawanie nowego zadania na później, dodanie zadania do zrobienia teraz do 28/04 
 - resztę funckcjonalności zaplanuję później
+
+## Design
+![](/assets/images/event_strorming.png)
 
 ## Quick start
