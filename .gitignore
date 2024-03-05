@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/Bootstrapper/DeepFocus.Bootstrapper/bin/Debug/net8.0
+/src/Bootstrapper/DeepFocus.Bootstrapper/obj/Debug/net8.0
+/src/Bootstrapper/DeepFocus.Bootstrapper/obj
+/src/Modules/Users/DeepFocus.Modules.Users.Api/obj
+/src/Modules/Users/DeepFocus.Modules.Users.Core/obj
+/src/Shared/Modular.Abstractions/bin/Debug
+/src/Shared/Modular.Abstractions/obj
+/src/Shared/Modular.Infrastructure/bin/Debug/net8.0
+/src/Shared/Modular.Infrastructure/obj
+/.vs/DeepFocus

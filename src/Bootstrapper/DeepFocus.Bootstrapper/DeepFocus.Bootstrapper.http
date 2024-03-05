@@ -1,0 +1,6 @@
+@DeepFocus.Bootstrapper_HostAddress = http://localhost:5277
+
+GET {{DeepFocus.Bootstrapper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
