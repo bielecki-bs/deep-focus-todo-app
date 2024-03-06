@@ -23,7 +23,7 @@ namespace DeepFocus.Bootstrapper
             services.AddModularInfrastructure(_configuration, _assemblies, _modules);
             foreach (var module in _modules)
             {
-                module.Register(services);
+                module.Register(services, _configuration);
             }
         }
 
