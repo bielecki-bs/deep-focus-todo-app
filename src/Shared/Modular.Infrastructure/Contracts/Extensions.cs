@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Modular.Infrastructure.Contracts;
 
@@ -13,15 +13,15 @@ public static class Extensions
 
         return services;
     }
-        
+
     public static IApplicationBuilder ValidateContracts(this IApplicationBuilder app, IEnumerable<Assembly> assemblies)
     {
         var contractRegistry = app.ApplicationServices.GetRequiredService<IContractRegistry>();
         contractRegistry.Validate(assemblies);
-            
+
         return app;
     }
-        
+
     public static IContractRegistry UseContracts(this IApplicationBuilder app)
         => app.ApplicationServices.GetRequiredService<IContractRegistry>();
 }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Modular.Abstractions.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using Modular.Abstractions.Contexts;
 
 namespace Modular.Infrastructure.Contexts;
 
@@ -29,13 +29,13 @@ public class IdentityContext : IIdentityContext
         {
             return;
         }
-            
+
         IsAuthenticated = principal.Identity?.IsAuthenticated is true;
         Id = IsAuthenticated ? Guid.Parse(principal.Identity.Name) : Guid.Empty;
         Role = principal.Claims.SingleOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
         Claims = principal.Claims.GroupBy(x => x.Type)
             .ToDictionary(x => x.Key, x => x.Select(c => c.Value.ToString()));
     }
-        
+
     public static IIdentityContext Empty => new IdentityContext();
 }

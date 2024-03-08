@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Humanizer;
+using Modular.Abstractions.Exceptions;
+using System;
 using System.Collections.Concurrent;
 using System.Net;
-using Humanizer;
-using Modular.Abstractions.Exceptions;
 
 namespace Modular.Infrastructure.Exceptions;
 

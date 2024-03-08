@@ -1,6 +1,6 @@
+using Modular.Abstractions.Contracts;
 using System.Collections.Generic;
 using System.Reflection;
-using Modular.Abstractions.Contracts;
 
 namespace Modular.Infrastructure.Contracts;
 

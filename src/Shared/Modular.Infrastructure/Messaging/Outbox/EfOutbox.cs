@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +9,9 @@ using Modular.Infrastructure.Contexts;
 using Modular.Infrastructure.Messaging.Contexts;
 using Modular.Infrastructure.Messaging.Dispatchers;
 using Modular.Infrastructure.Serialization;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 
@@ -33,7 +33,7 @@ public sealed class EfOutbox<T> : IOutbox where T : DbContext
     public EfOutbox(T dbContext, IMessageContextRegistry messageContextRegistry,
         IMessageContextProvider messageContextProvider, IClock clock, IModuleClient moduleClient,
         IAsyncMessageDispatcher asyncMessageDispatcher, IJsonSerializer jsonSerializer,
-        IOptions<MessagingOptions> messagingOptions, IOptions<OutboxOptions> outboxOptions,  ILogger<EfOutbox<T>> logger)
+        IOptions<MessagingOptions> messagingOptions, IOptions<OutboxOptions> outboxOptions, ILogger<EfOutbox<T>> logger)
     {
         _dbContext = dbContext;
         _set = dbContext.Set<OutboxMessage>();
@@ -99,7 +99,7 @@ public sealed class EfOutbox<T> : IOutbox where T : DbContext
             _logger.LogWarning($"Outbox is disabled ('{module}'), outgoing messages won't be sent.");
             return;
         }
-            
+
         var unsentMessages = await _set.Where(x => x.SentAt == null).ToListAsync();
         if (!unsentMessages.Any())
         {
@@ -125,7 +125,7 @@ public sealed class EfOutbox<T> : IOutbox where T : DbContext
             var name = message.GetType().Name.Underscore();
             _messageContextRegistry.Set(message, new MessageContext(messageId, new Context(correlationId, outboxMessage.TraceId,
                 new IdentityContext(outboxMessage.UserId))));
-                
+
             _logger.LogInformation("Publishing a message from outbox ('{Module}'): {Name} [Message ID: {MessageId}, Correlation ID: {CorrelationId}]...",
                 module, name, messageId, correlationId);
 
@@ -137,7 +137,7 @@ public sealed class EfOutbox<T> : IOutbox where T : DbContext
             {
                 await _moduleClient.PublishAsync(message);
             }
-                
+
             outboxMessage.SentAt = sentAt;
             _set.Update(outboxMessage);
         }

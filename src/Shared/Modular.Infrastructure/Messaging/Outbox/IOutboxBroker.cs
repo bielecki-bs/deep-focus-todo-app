@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Modular.Abstractions.Messaging;
+﻿using Modular.Abstractions.Messaging;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 

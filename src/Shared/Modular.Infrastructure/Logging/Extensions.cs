@@ -1,19 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using Serilog.Events;
-using Serilog.Filters;
 using Modular.Abstractions.Commands;
 using Modular.Abstractions.Contexts;
 using Modular.Abstractions.Events;
 using Modular.Abstractions.Queries;
 using Modular.Infrastructure.Logging.Decorators;
 using Modular.Infrastructure.Logging.Options;
+using Serilog;
+using Serilog.Events;
+using Serilog.Filters;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Modular.Infrastructure.Logging;
 
@@ -40,9 +40,9 @@ public static class Extensions
             var context = ctx.RequestServices.GetRequiredService<IContext>();
             logger.LogInformation("Started processing a request [Request ID: '{RequestId}', Correlation ID: '{CorrelationId}', Trace ID: '{TraceId}', User ID: '{UserId}']...",
                 context.RequestId, context.CorrelationId, context.TraceId, context.Identity.IsAuthenticated ? context.Identity.Id : string.Empty);
-                
+
             await next();
-                
+
             logger.LogInformation("Finished processing a request with status code: {StatusCode} [Request ID: '{RequestId}', Correlation ID: '{CorrelationId}', Trace ID: '{TraceId}', User ID: '{UserId}']",
                 ctx.Response.StatusCode, context.RequestId, context.CorrelationId, context.TraceId, context.Identity.IsAuthenticated ? context.Identity.Id : string.Empty);
         });

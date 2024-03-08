@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Modular.Abstractions.Exceptions;
+using System;
+using System.Linq;
 
 namespace Modular.Infrastructure.Exceptions;
 
@@ -13,7 +13,7 @@ public class ExceptionCompositionRoot : IExceptionCompositionRoot
     {
         _serviceProvider = serviceProvider;
     }
-        
+
     public ExceptionResponse Map(Exception exception)
     {
         using var scope = _serviceProvider.CreateScope();

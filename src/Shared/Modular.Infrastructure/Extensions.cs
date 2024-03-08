@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -31,6 +27,10 @@ using Modular.Infrastructure.Security;
 using Modular.Infrastructure.Serialization;
 using Modular.Infrastructure.Storage;
 using Modular.Infrastructure.Time;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Modular.Infrastructure;
 
@@ -38,12 +38,12 @@ public static class Extensions
 {
     private const string AppSectionName = "app";
     private const string CorrelationIdKey = "correlation-id";
-        
+
     public static IServiceCollection AddInitializer<T>(this IServiceCollection services) where T : class, IInitializer
         => services.AddTransient<IInitializer, T>();
-        
+
     public static IServiceCollection AddModularInfrastructure(this IServiceCollection services,
-        IConfiguration configuration, IList<Assembly> assemblies, IList<IModule> modules) 
+        IConfiguration configuration, IList<Assembly> assemblies, IList<IModule> modules)
     {
         var disabledModules = new List<string>();
         foreach (var (key, value) in configuration.AsEnumerable())
@@ -73,7 +73,7 @@ public static class Extensions
 
         var appOptionsSection = configuration.GetSection(AppSectionName);
         services.Configure<AppOptions>(appOptionsSection);
-        
+
         var appOptions = configuration.GetAppOptions();
         var appInfo = new AppInfo(appOptions.Name, appOptions.Version);
         services.AddSingleton(appInfo);
@@ -112,10 +112,10 @@ public static class Extensions
                 {
                     manager.ApplicationParts.Remove(part);
                 }
-                    
+
                 manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
-            
+
         return services;
     }
 
@@ -146,10 +146,10 @@ public static class Extensions
 
     public static AppOptions GetAppOptions(this IConfiguration configuration)
         => configuration.GetOptions<AppOptions>(AppSectionName);
-    
+
     public static T GetOptions<T>(this IConfiguration configuration, string sectionName) where T : new()
         => configuration.GetSection(sectionName).GetOptions<T>();
-        
+
     public static T GetOptions<T>(this IConfigurationSection section) where T : new()
     {
         var options = new T();
@@ -171,14 +171,14 @@ public static class Extensions
             ? type.Namespace.Split(".")[splitIndex].ToLowerInvariant()
             : string.Empty;
     }
-        
+
     public static IApplicationBuilder UseCorrelationId(this IApplicationBuilder app)
         => app.Use((ctx, next) =>
         {
             ctx.Items.Add(CorrelationIdKey, Guid.NewGuid());
             return next();
         });
-        
+
     public static Guid? TryGetCorrelationId(this HttpContext context)
-        => context.Items.TryGetValue(CorrelationIdKey, out var id) ? (Guid) id : null;
+        => context.Items.TryGetValue(CorrelationIdKey, out var id) ? (Guid)id : null;
 }

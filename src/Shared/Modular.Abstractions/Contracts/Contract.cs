@@ -1,9 +1,9 @@
+using Modular.Abstractions.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Serialization;
-using Modular.Abstractions.Messaging;
 
 namespace Modular.Abstractions.Contracts;
 
@@ -21,7 +21,7 @@ public abstract class Contract<T> : IContract where T : class, IMessage
     {
         if (!(expression.Body is MemberExpression memberExpression))
         {
-            memberExpression = ((UnaryExpression) expression.Body).Operand as MemberExpression;
+            memberExpression = ((UnaryExpression)expression.Body).Operand as MemberExpression;
         }
 
         if (memberExpression is null)

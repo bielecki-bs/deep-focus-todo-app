@@ -8,7 +8,7 @@ namespace Modular.Infrastructure.Messaging.Outbox;
 public static class Extensions
 {
     private const string SectionName = "outbox";
-    
+
     public static IServiceCollection AddOutbox<T>(this IServiceCollection services, IConfiguration configuration) where T : DbContext
     {
         var outboxOptions = configuration.GetOptions<OutboxOptions>(SectionName);
@@ -21,7 +21,7 @@ public static class Extensions
         services.AddTransient<IOutbox, EfOutbox<T>>();
         services.AddTransient<EfInbox<T>>();
         services.AddTransient<EfOutbox<T>>();
-            
+
         using var serviceProvider = services.BuildServiceProvider();
         serviceProvider.GetRequiredService<InboxTypeRegistry>().Register<EfInbox<T>>();
         serviceProvider.GetRequiredService<OutboxTypeRegistry>().Register<EfOutbox<T>>();

@@ -1,12 +1,12 @@
+using Microsoft.Extensions.Logging;
+using Modular.Abstractions.Contracts;
+using Modular.Abstractions.Messaging;
+using Modular.Infrastructure.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using Microsoft.Extensions.Logging;
-using Modular.Abstractions.Contracts;
-using Modular.Abstractions.Messaging;
-using Modular.Infrastructure.Modules;
 
 namespace Modular.Infrastructure.Contracts;
 
@@ -39,7 +39,7 @@ public class ContractRegistry : IContractRegistry
 
     public IContractRegistry RegisterPathWithResponse<TResponse>(string path) where TResponse : class
         => RegisterPath<Empty, TResponse>(path);
-        
+
     public IContractRegistry RegisterPath<TRequest, TResponse>(string path)
         where TRequest : class where TResponse : class
     {
@@ -52,7 +52,7 @@ public class ContractRegistry : IContractRegistry
         {
             throw new ContractException($"Path: '{path}' is already registered.");
         }
-            
+
         var requestContract = GetContractType<TRequest>();
         var responseContract = GetContractType<TResponse>();
         _paths.Add(path, (requestContract, responseContract));
@@ -108,7 +108,7 @@ public class ContractRegistry : IContractRegistry
         {
             return;
         }
-            
+
         var contractModule = contract.GetModuleName();
         var messageAttribute = contractType.GetCustomAttribute<MessageAttribute>() ??
                                contract.Type.GetCustomAttribute<MessageAttribute>();
@@ -211,16 +211,16 @@ public class ContractRegistry : IContractRegistry
                 name = string.Join(".", nameParts.Skip(1));
                 continue;
             }
-                
+
             type = property.PropertyType;
             name = string.Join(".", nameParts.Skip(1));
         }
     }
-        
+
     private class Empty : IMessage
     {
     }
-        
+
     private class EmptyContract : Contract<Empty>
     {
     }

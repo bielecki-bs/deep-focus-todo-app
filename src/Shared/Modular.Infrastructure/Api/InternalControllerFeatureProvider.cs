@@ -1,7 +1,7 @@
-﻿using System;
-using System.Reflection;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using System;
+using System.Reflection;
 
 namespace Modular.Infrastructure.Api;
 

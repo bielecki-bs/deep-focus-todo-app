@@ -1,5 +1,5 @@
-﻿using System.Threading;
-using Modular.Abstractions.Contexts;
+﻿using Modular.Abstractions.Contexts;
+using System.Threading;
 
 namespace Modular.Infrastructure.Contexts;
 
@@ -20,7 +20,7 @@ public sealed class ContextAccessor
 
             if (value != null)
             {
-                Holder.Value = new ContextHolder {Context = value};
+                Holder.Value = new ContextHolder { Context = value };
             }
         }
     }

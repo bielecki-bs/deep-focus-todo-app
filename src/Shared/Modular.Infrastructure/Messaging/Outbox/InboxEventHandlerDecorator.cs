@@ -1,11 +1,11 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Modular.Abstractions.Events;
 using Modular.Abstractions.Messaging;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 
@@ -41,7 +41,7 @@ public class InboxEventHandlerDecorator<T> : IEventHandler<T> where T : class, I
             }
 
             using var scope = _serviceProvider.CreateScope();
-            var inbox = (IInbox) _serviceProvider.GetRequiredService(inboxType);
+            var inbox = (IInbox)_serviceProvider.GetRequiredService(inboxType);
             var context = _messageContextProvider.Get(@event);
             var name = @event.GetType().Name.Underscore();
             await inbox.HandleAsync(context.MessageId, name, () => _handler.HandleAsync(@event, cancellationToken));

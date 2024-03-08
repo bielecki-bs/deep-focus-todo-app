@@ -1,8 +1,8 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Modular.Abstractions.Commands;
 using Modular.Abstractions.Events;
 using Modular.Abstractions.Queries;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Abstractions.Dispatchers;
 

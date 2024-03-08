@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Modular.Abstractions.Commands;
+using Modular.Abstractions.Messaging;
+using Modular.Abstractions.Modules;
+using Modular.Infrastructure.Messaging.Contexts;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Modular.Abstractions.Commands;
-using Modular.Abstractions.Messaging;
-using Modular.Abstractions.Modules;
-using Modular.Infrastructure.Messaging.Contexts;
 
 namespace Modular.Infrastructure.Modules;
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Humanizer;
+﻿using Humanizer;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Modular.Abstractions.Contexts;
@@ -11,6 +7,10 @@ using Modular.Abstractions.Modules;
 using Modular.Infrastructure.Messaging.Contexts;
 using Modular.Infrastructure.Messaging.Dispatchers;
 using Modular.Infrastructure.Messaging.Outbox;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Messaging.Brokers;
 

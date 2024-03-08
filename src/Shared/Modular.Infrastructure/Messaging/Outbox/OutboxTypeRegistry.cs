@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Modular.Abstractions.Messaging;
+using System;
 using System.Collections.Generic;
-using Modular.Abstractions.Messaging;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Modular.Infrastructure.Api;
 
@@ -20,7 +20,7 @@ public static class Extensions
         object value)
     {
         var memberExpression = expression.Body as MemberExpression ??
-                               ((UnaryExpression) expression.Body).Operand as MemberExpression;
+                               ((UnaryExpression)expression.Body).Operand as MemberExpression;
         if (memberExpression is null)
         {
             return model;
@@ -45,7 +45,7 @@ public static class Extensions
         var section = configuration.GetSection("cors");
         var corsOptions = section.GetOptions<CorsOptions>();
         services.Configure<CorsOptions>(section);
-            
+
         return services
             .AddCors(cors =>
             {
@@ -72,14 +72,14 @@ public static class Extensions
                 });
             });
     }
-        
+
     public static string GetUserIpAddress(this HttpContext context)
     {
         if (context is null)
         {
             return string.Empty;
         }
-            
+
         var ipAddress = context.Connection.RemoteIpAddress?.ToString();
         if (context.Request.Headers.TryGetValue("x-forwarded-for", out var forwardedFor))
         {

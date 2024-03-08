@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using Modular.Abstractions.Queries;
+using System.Threading;
 using System.Threading.Tasks;
-using Modular.Abstractions.Queries;
 
 namespace Modular.Infrastructure.Queries.Decorators;
 
@@ -19,7 +19,7 @@ public sealed class PagedQueryHandlerDecorator<TQuery, TResult> : IQueryHandler<
     {
         const int maxResults = 100;
         const int defaultResults = 10;
-            
+
         if (query is IPagedQuery pagedQuery)
         {
             if (pagedQuery.Page <= 0)

@@ -1,10 +1,10 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Modular.Abstractions.Events;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Postgres.Decorators;
 
@@ -34,7 +34,7 @@ public class TransactionalEventHandlerDecorator<T> : IEventHandler<T> where T : 
             return;
         }
 
-        var unitOfWork = (IUnitOfWork) _serviceProvider.GetRequiredService(unitOfWorkType);
+        var unitOfWork = (IUnitOfWork)_serviceProvider.GetRequiredService(unitOfWorkType);
         var unitOfWorkName = unitOfWorkType.Name;
         var name = @event.GetType().Name.Underscore();
         _logger.LogInformation("Handling: {Name} using TX ({UnitOfWorkName})...", name, unitOfWorkName);

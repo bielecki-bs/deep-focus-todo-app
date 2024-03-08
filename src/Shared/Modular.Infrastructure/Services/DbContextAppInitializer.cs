@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Services;
 
@@ -19,7 +19,7 @@ public class DbContextAppInitializer : IHostedService
         _serviceProvider = serviceProvider;
         _logger = logger;
     }
-        
+
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         var dbContextTypes = AppDomain.CurrentDomain.GetAssemblies()
@@ -34,11 +34,11 @@ public class DbContextAppInitializer : IHostedService
             {
                 continue;
             }
-                
+
             _logger.LogInformation("Running DB context for module {Module}...", dbContextType.GetModuleName());
             await dbContext.Database.MigrateAsync(cancellationToken);
         }
-            
+
         var initializers = scope.ServiceProvider.GetServices<IInitializer>();
         foreach (var initializer in initializers)
         {

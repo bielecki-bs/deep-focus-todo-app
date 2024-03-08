@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Modular.Abstractions.Kernel;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Modular.Abstractions.Kernel;
 
 namespace Modular.Infrastructure.Kernel;
 
@@ -19,7 +19,7 @@ public sealed class DomainEventDispatcher : IDomainEventDispatcher
 
     public Task DispatchAsync(IDomainEvent[] events, CancellationToken cancellationToken = default)
         => DispatchAsync(cancellationToken, events);
-        
+
     private async Task DispatchAsync(CancellationToken cancellationToken, params IDomainEvent[] events)
     {
         if (events is null || !events.Any())
@@ -32,11 +32,11 @@ public sealed class DomainEventDispatcher : IDomainEventDispatcher
         {
             var handlerType = typeof(IDomainEventHandler<>).MakeGenericType(@event.GetType());
             var handlers = scope.ServiceProvider.GetServices(handlerType);
-                
-            var tasks = handlers.Select(x => (Task) handlerType
+
+            var tasks = handlers.Select(x => (Task)handlerType
                 .GetMethod(nameof(IDomainEventHandler<IDomainEvent>.HandleAsync))
-                ?.Invoke(x, new object[] {@event, cancellationToken}));
-                
+                ?.Invoke(x, new object[] { @event, cancellationToken }));
+
             await Task.WhenAll(tasks);
         }
     }

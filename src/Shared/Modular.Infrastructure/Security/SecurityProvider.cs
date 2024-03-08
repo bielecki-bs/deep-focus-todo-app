@@ -1,5 +1,5 @@
-using System.Text.Encodings.Web;
 using Modular.Infrastructure.Security.Encryption;
+using System.Text.Encodings.Web;
 
 namespace Modular.Infrastructure.Security;
 

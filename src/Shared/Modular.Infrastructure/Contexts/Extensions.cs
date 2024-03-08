@@ -9,7 +9,7 @@ public static class Extensions
     {
         services.AddSingleton<ContextAccessor>();
         services.AddTransient(sp => sp.GetRequiredService<ContextAccessor>().Context);
-            
+
         return services;
     }
 
@@ -17,11 +17,11 @@ public static class Extensions
     {
         app.Use((ctx, next) =>
         {
-            ctx.RequestServices.GetRequiredService<ContextAccessor>().Context = new Context(ctx);;
-                
+            ctx.RequestServices.GetRequiredService<ContextAccessor>().Context = new Context(ctx); ;
+
             return next();
         });
-            
+
         return app;
     }
 }

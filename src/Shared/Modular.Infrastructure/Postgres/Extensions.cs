@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Modular.Abstractions.Commands;
 using Modular.Abstractions.Events;
 using Modular.Abstractions.Queries;
 using Modular.Infrastructure.Postgres.Decorators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Postgres;
 
@@ -35,7 +35,7 @@ public static class Extensions
         };
 
         var totalResults = await data.CountAsync();
-        var totalPages = totalResults <= results ? 1 : (int) Math.Floor((double) totalResults / results);
+        var totalPages = totalResults <= results ? 1 : (int)Math.Floor((double)totalResults / results);
         var result = await data.Skip((page - 1) * results).Take(results).ToListAsync(cancellationToken);
 
         return new Paged<T>(result, page, results, totalPages, totalResults);

@@ -1,6 +1,6 @@
-﻿using System;
-using Modular.Abstractions.Contexts;
+﻿using Modular.Abstractions.Contexts;
 using Modular.Abstractions.Messaging;
+using System;
 
 namespace Modular.Infrastructure.Messaging.Contexts;
 

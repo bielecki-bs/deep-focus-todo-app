@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Modular.Abstractions.Queries;
 using Modular.Infrastructure.Queries.Decorators;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Modular.Infrastructure.Queries;
 
@@ -16,14 +16,14 @@ public static class Extensions
                 .WithoutAttribute<DecoratorAttribute>())
             .AsImplementedInterfaces()
             .WithScopedLifetime());
-            
+
         return services;
     }
-        
+
     public static IServiceCollection AddPagedQueryDecorator(this IServiceCollection services)
     {
         services.TryDecorate(typeof(IQueryHandler<,>), typeof(PagedQueryHandlerDecorator<,>));
-            
+
         return services;
     }
 }

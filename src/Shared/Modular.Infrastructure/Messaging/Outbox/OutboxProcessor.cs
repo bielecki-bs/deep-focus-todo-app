@@ -1,12 +1,12 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 
@@ -46,7 +46,7 @@ public class OutboxProcessor : BackgroundService
                 await Task.Delay(_interval, stoppingToken);
                 continue;
             }
-                
+
             _logger.LogTrace("Started processing outbox messages...");
             var stopwatch = new Stopwatch();
             stopwatch.Start();

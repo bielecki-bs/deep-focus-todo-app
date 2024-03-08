@@ -1,5 +1,5 @@
-﻿using System;
-using Modular.Abstractions.Exceptions;
+﻿using Modular.Abstractions.Exceptions;
+using System;
 
 namespace Modular.Infrastructure.Exceptions;
 

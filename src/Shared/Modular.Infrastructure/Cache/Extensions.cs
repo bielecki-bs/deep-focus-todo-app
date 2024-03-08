@@ -15,7 +15,7 @@ public static class Extensions
         services.AddScoped<ICache, RedisCache>();
         services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(options.ConnectionString));
         services.AddScoped(ctx => ctx.GetRequiredService<IConnectionMultiplexer>().GetDatabase());
-            
+
         return services;
     }
 }

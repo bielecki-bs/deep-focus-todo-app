@@ -1,6 +1,6 @@
-using System;
 using Microsoft.Extensions.Caching.Memory;
 using Modular.Abstractions.Storage;
+using System;
 
 namespace Modular.Infrastructure.Storage;
 
@@ -13,7 +13,7 @@ public class RequestStorage : IRequestStorage
         _cache = cache;
     }
 
-    public void Set<T>(string key, T value, TimeSpan? duration = null) 
+    public void Set<T>(string key, T value, TimeSpan? duration = null)
         => _cache.Set(key, value, duration ?? TimeSpan.FromSeconds(5));
 
     public T Get<T>(string key) => _cache.Get<T>(key);

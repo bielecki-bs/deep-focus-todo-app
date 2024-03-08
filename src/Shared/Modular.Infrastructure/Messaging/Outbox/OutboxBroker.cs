@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Modular.Abstractions.Messaging;
+using System;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Messaging.Outbox;
 

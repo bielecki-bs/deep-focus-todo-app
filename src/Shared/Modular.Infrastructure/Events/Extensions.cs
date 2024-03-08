@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Modular.Abstractions.Events;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Modular.Infrastructure.Events;
 

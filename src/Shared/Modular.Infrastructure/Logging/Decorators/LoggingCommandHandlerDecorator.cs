@@ -1,11 +1,11 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.Extensions.Logging;
 using Modular.Abstractions.Commands;
 using Modular.Abstractions.Contexts;
 using Modular.Abstractions.Messaging;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Modular.Infrastructure.Logging.Decorators;
 

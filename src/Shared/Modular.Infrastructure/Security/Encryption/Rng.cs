@@ -6,7 +6,7 @@ namespace Modular.Infrastructure.Security.Encryption;
 
 public sealed class Rng : IRng
 {
-    private static readonly string[] SpecialChars = {"/", "\\", "=", "+", "?", ":", "&"};
+    private static readonly string[] SpecialChars = { "/", "\\", "=", "+", "?", ":", "&" };
 
     public string Generate(int length = 50, bool removeSpecialChars = true)
     {

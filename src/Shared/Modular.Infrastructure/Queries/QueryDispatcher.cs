@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Modular.Abstractions.Queries;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Modular.Abstractions.Queries;
 
 namespace Modular.Infrastructure.Queries;
 
@@ -25,6 +25,6 @@ public sealed class QueryDispatcher : IQueryDispatcher
         }
 
         // ReSharper disable once PossibleNullReferenceException
-        return await (Task<TResult>)method.Invoke(handler, new object[] {query, cancellationToken});
+        return await (Task<TResult>)method.Invoke(handler, new object[] { query, cancellationToken });
     }
 }
