@@ -11,4 +11,8 @@
     <ProjectReference Include="..\..\..\Shared\Modular.Infrastructure\Modular.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DAL\Migrations\" />
+  </ItemGroup>
+
 </Project>
