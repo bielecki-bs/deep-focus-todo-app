@@ -66,7 +66,7 @@ public static class Extensions
             swagger.CustomSchemaIds(x => x.FullName);
             swagger.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Modular API",
+                Title = "Deep Focus API",
                 Version = "v1"
             });
         });
@@ -133,7 +133,7 @@ public static class Extensions
         {
             reDoc.RoutePrefix = "docs";
             reDoc.SpecUrl("/swagger/v1/swagger.json");
-            reDoc.DocumentTitle = "Modular API";
+            reDoc.DocumentTitle = "Deep Focus API";
         });
         app.UseAuth();
         app.UseContext();

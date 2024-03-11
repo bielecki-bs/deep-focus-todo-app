@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
@@ -52,15 +53,18 @@ public static class Extensions
             }
 
             IEnumerable<string> GetSettings(string pattern)
-                => Directory.EnumerateFiles(ctx.HostingEnvironment.ContentRootPath,
+            {
+                var contentRoot = Directory.GetParent(ctx.Configuration.GetValue<string>(WebHostDefaults.ContentRootKey)).Parent.FullName;
+                return Directory.EnumerateFiles(contentRoot,
                     $"module.{pattern}.json", SearchOption.AllDirectories);
+            }
         });
 
     public static IServiceCollection AddModuleRequests(this IServiceCollection services, IList<Assembly> assemblies)
     {
         services.AddModuleRegistry(assemblies);
         services.AddSingleton<IModuleClient, ModuleClient>();
-        // services.AddSingleton<IModuleSerializer, JsonModuleSerializer>();
+        services.AddSingleton<IModuleSerializer, JsonModuleSerializer>();
         services.AddSingleton<IModuleSerializer, MessagePackModuleSerializer>();
         services.AddSingleton<IModuleSubscriber, ModuleSubscriber>();
 

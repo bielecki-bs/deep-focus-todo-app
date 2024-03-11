@@ -84,6 +84,7 @@ public static class Extensions
     {
         var options = configuration.GetOptions<PostgresOptions>("postgres");
         services.AddDbContext<T>(x => x.UseNpgsql(options.ConnectionString));
+        services.AddSingleton(new UnitOfWorkTypeRegistry());
 
         return services;
     }
