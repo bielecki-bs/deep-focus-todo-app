@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Modular.Infrastructure;
 using Modular.Infrastructure.Messaging.Outbox;
 using Modular.Infrastructure.Postgres;
+using Modular.Modules.Users.Core;
 using Modular.Modules.Users.Core.DAL;
 using Modular.Modules.Users.Core.DAL.Repositories;
 using Modular.Modules.Users.Core.Entities;
@@ -17,7 +18,11 @@ namespace DeepFocus.Modules.Users.Core
     internal static class Extensions
     {
         public static IServiceCollection AddCore(this IServiceCollection services, IConfiguration configuration)
-            => services
+        {
+            var registrationOptions = configuration.GetOptions<RegistrationOptions>("users:registration");
+            services.AddSingleton(registrationOptions);
+
+            return services
                 .AddSingleton<IUserRequestStorage, UserRequestStorage>()
                 .AddScoped<IRoleRepository, RoleRepository>()
                 .AddScoped<IUserRepository, UserRepository>()
@@ -26,5 +31,6 @@ namespace DeepFocus.Modules.Users.Core
                 .AddOutbox<UsersDbContext>(configuration)
                 .AddUnitOfWork<UsersUnitOfWork>()
                 .AddInitializer<UsersInitializer>();
+        }
     }
 }
