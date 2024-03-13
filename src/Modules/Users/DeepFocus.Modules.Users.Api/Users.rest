@@ -1,4 +1,4 @@
-@url = http://localhost:5277/users-module
+@url = https://localhost:7189
 @email = user1@deepfocus.io
 @password = secret
 @role = user
@@ -17,10 +17,7 @@ Content-Type: application/json
 {
   "email": "{{email}}",
   "password": "{{password}}",
-  "role": "{{role}}",
-  "claims": {
-    "permissions": ["conferences", "hosts", "speakers", "tickets", "users"]
-  }
+  "role": "{{role}}"
 }
 
 ###
@@ -30,4 +27,12 @@ Content-Type: application/json
 {
   "email": "{{email}}",
   "password": "{{password}}"
+}
+
+###
+DELETE {{url}}/account/sign-out
+Content-Type: application/json
+
+{
+
 }

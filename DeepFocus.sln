@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepFocus.Bootstrapper", "src\Bootstrapper\DeepFocus.Bootstrapper\DeepFocus.Bootstrapper.csproj", "{F98341F7-79FC-4015-A92E-6296CB6112F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepFocus.Bootstrapper", "src\Bootstrapper\DeepFocus.Bootstrapper\DeepFocus.Bootstrapper.csproj", "{F98341F7-79FC-4015-A92E-6296CB6112F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modular.Abstractions", "src\Shared\Modular.Abstractions\Modular.Abstractions.csproj", "{1E021C64-9620-4788-ADE5-6A69733FBDA1}"
 EndProject
@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modular.Infrastructure", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{5CB95043-2D2A-42A2-83AB-04C9E4171813}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepFocus.Modules.Users.Core", "src\Modules\Users\DeepFocus.Modules.Users.Core\DeepFocus.Modules.Users.Core.csproj", "{EBF482E3-184A-4B26-A4A0-AC78D2E3B414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepFocus.Modules.Users.Core", "src\Modules\Users\DeepFocus.Modules.Users.Core\DeepFocus.Modules.Users.Core.csproj", "{EBF482E3-184A-4B26-A4A0-AC78D2E3B414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepFocus.Modules.Users.Api", "src\Modules\Users\DeepFocus.Modules.Users.Api\DeepFocus.Modules.Users.Api.csproj", "{86AB9398-409D-4EEE-AF11-1DE4C18334B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepFocus.Modules.Users.Api", "src\Modules\Users\DeepFocus.Modules.Users.Api\DeepFocus.Modules.Users.Api.csproj", "{86AB9398-409D-4EEE-AF11-1DE4C18334B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{340DEF43-8CF0-4F4E-88B9-AD74AA1F0BCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepFocus.Modules.Tasks.Core", "src\Modules\Tasks\DeepFocus.Modules.Tasks.Core\DeepFocus.Modules.Tasks.Core.csproj", "{56E3B38E-E882-4940-872D-1273D3FDB559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{86AB9398-409D-4EEE-AF11-1DE4C18334B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86AB9398-409D-4EEE-AF11-1DE4C18334B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86AB9398-409D-4EEE-AF11-1DE4C18334B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E3B38E-E882-4940-872D-1273D3FDB559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E3B38E-E882-4940-872D-1273D3FDB559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E3B38E-E882-4940-872D-1273D3FDB559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E3B38E-E882-4940-872D-1273D3FDB559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,8 @@ Global
 		{5CB95043-2D2A-42A2-83AB-04C9E4171813} = {71EB8655-7F0A-4B91-9DFF-A0B3999E90FB}
 		{EBF482E3-184A-4B26-A4A0-AC78D2E3B414} = {5CB95043-2D2A-42A2-83AB-04C9E4171813}
 		{86AB9398-409D-4EEE-AF11-1DE4C18334B9} = {5CB95043-2D2A-42A2-83AB-04C9E4171813}
+		{340DEF43-8CF0-4F4E-88B9-AD74AA1F0BCF} = {71EB8655-7F0A-4B91-9DFF-A0B3999E90FB}
+		{56E3B38E-E882-4940-872D-1273D3FDB559} = {340DEF43-8CF0-4F4E-88B9-AD74AA1F0BCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAB2E39B-0F1F-4368-B931-694F0E82A883}

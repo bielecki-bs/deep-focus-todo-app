@@ -1,6 +1,7 @@
 ﻿using Modular.Abstractions.Modules;
 using Modular.Infrastructure;
 using Modular.Infrastructure.Modules;
+using Modular.Infrastructure.Services;
 using System.Reflection;
 
 namespace DeepFocus.Bootstrapper
@@ -20,6 +21,7 @@ namespace DeepFocus.Bootstrapper
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHostedService<DbContextAppInitializer>();
             services.AddModularInfrastructure(_configuration, _assemblies, _modules);
             foreach (var module in _modules)
             {
